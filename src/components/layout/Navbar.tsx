@@ -2,13 +2,18 @@ import SearchBar from "../ui/SearchBar";
 import Image from "next/image";
 import Link from "next/link";
 import { IoPersonCircle } from "react-icons/io5";
+import { Button } from "../ui/button";
+
+const onLogin = false;
 
 export default function Navbar() {
   return (
-    <section className="w-screen p-2 h-16 bg-sky-400">
+    <nav className="w-screen p-2 h-16 shadow-md fixed top-0 bg-pink-50">
       <div className="w-full mx-auto max-w-screen-xl items-center flex justify-between">
         <div className="flex items-center  gap-4 w-fit">
-          <h1 className="text-3xl font-bold ">illustraLine</h1>
+          <Link href="/" className="text-3xl font-bold ">
+            illustraLine
+          </Link>
           <SearchBar></SearchBar>
         </div>
         <div className="flex items-center gap-4">
@@ -21,14 +26,34 @@ export default function Navbar() {
             </li>
           </ul>
 
-          <div className="flex items-center bg-slate-300 p-2 rounded-lg gap-1 w-fit ">
-            <span>Username</span>
-            <span>
-              <IoPersonCircle size={30} />
-            </span>
-          </div>
+          {onLogin ? (
+            <div className="flex items-center bg-slate-100 border-pink-200 border-2  p-2 rounded-lg gap-1 w-fit ">
+              <span>Username</span>
+              <span>
+                <IoPersonCircle size={30} />
+              </span>
+            </div>
+          ) : (
+            <div className="flex gap-2 items-center">
+              <Link href="/login">
+                <Button
+                  className="border-pink-200 border-2   "
+                  variant="outline"
+                >
+                  Login
+                </Button>
+              </Link>
+              <span>or</span>
+              <Link href="/register">
+                <Button className="bg-pink-200 text-pink-700   ">
+                  {" "}
+                  Sign Up
+                </Button>
+              </Link>
+            </div>
+          )}
         </div>
       </div>
-    </section>
+    </nav>
   );
 }
