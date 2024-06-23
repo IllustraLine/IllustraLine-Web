@@ -1,6 +1,6 @@
 export default function FundamentalStudyPage() {
   return (
-    <div>
+    <div className="pt-16 max-w-screen-xl mx-auto">
       <h1 className="text-2xl font-bold mb-4">Fundamental Gambar</h1>
       <section className="mb-6">
         <h2 className="text-xl font-semibold mb-2">Pengenalan Gambar</h2>

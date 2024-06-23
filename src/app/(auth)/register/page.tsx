@@ -1,5 +1,6 @@
 import Image from "next/image";
 import regBG from "@/public/image/registerbg.webp";
+import AuthForm from "@/components/layout/AuthForm";
 
 export default function LoginPage() {
   return (
@@ -12,7 +13,7 @@ export default function LoginPage() {
         />
       </div>
       <div className="bg-sky-400 flex-1 flex">
-        <form action="" className="bg-black m-auto h-96 w-72 "></form>
+        <AuthForm type="register"></AuthForm>
       </div>
     </div>
   );
