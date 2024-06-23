@@ -71,7 +71,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ type }) => {
 
   return (
     <form
-      className="mx-auto mt-10 h-fit max-w-md rounded-md bg-white p-6 shadow-md"
+      className="mx-auto mt-10 h-fit w-96 rounded-md border bg-white p-6"
       onSubmit={handleSubmit}
     >
       <h2 className="mb-6 text-2xl font-bold">
@@ -175,7 +175,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ type }) => {
       <div className="flex items-center justify-between">
         <button
           type="submit"
-          className="w-full rounded-md bg-indigo-600 px-4 py-2 font-semibold text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          className="w-full rounded-md bg-blue-400 px-4 py-2 font-semibold text-white shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-indigo-500"
         >
           {type === "login" ? "Login" : "Register"}
         </button>
