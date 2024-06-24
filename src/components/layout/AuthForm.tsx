@@ -1,7 +1,7 @@
 "use client";
+import { login, register } from "@/services/auth";
 import React, { useState } from "react";
 import { z } from "zod";
-
 interface AuthFormProps {
   type: "login" | "register";
 }
@@ -51,20 +51,32 @@ const AuthForm: React.FC<AuthFormProps> = ({ type }) => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
+      console.log("try");
       schema.parse(formData);
       setErrors({});
-      // Handle form submission logic here
-      console.log(formData);
+
+      if (type === "login") {
+        await login(formData.email, formData.password);
+      } else {
+        await register(formData.username, formData.email, formData.password);
+      }
+
+      // Handle successful form submission (e.g., navigate to another page or show a success message)
+      console.log("Form submitted successfully");
     } catch (err) {
+      console.log("catch");
       if (err instanceof z.ZodError) {
         const errorObject: { [key: string]: string } = {};
         err.errors.forEach((error) => {
           errorObject[error.path[0] as string] = error.message;
         });
         setErrors(errorObject);
+      } else {
+        // Handle other errors (e.g., network errors or server errors)
+        setErrors({ general: "Something went wrong. Please try again." });
       }
     }
   };
@@ -72,7 +84,9 @@ const AuthForm: React.FC<AuthFormProps> = ({ type }) => {
   return (
     <form
       className="mx-auto mt-10 h-fit w-96 rounded-md border bg-white p-6"
-      onSubmit={handleSubmit}
+      onSubmit={(e) => {
+        handleSubmit;
+      }}
     >
       <h2 className="mb-6 text-2xl font-bold">
         {type === "login" ? "Login" : "Register"}

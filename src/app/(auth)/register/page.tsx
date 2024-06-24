@@ -18,9 +18,18 @@ export default function LoginPage() {
           illustraLine
         </Link>
 
-        <div className="m-auto">
+        <div className="m-auto flex w-fit flex-col items-center justify-center">
           <h1 className="text-center font-bold md:text-3xl">Buat Akun</h1>
           <AuthForm type={"register"}></AuthForm>
+          <span className="w-full text-center">
+            Sudah punya akun ?{" "}
+            <Link
+              href="/login"
+              className="w-full text-center font-bold text-blue-500"
+            >
+              Masuk
+            </Link>
+          </span>
         </div>
       </div>
     </div>
